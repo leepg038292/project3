@@ -1,0 +1,1399 @@
+.examples-landing-page,
+.examples-landing-page * {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'MaruBuriOtf-Bold';
+  src: url('/fonts/MaruBuri-Bold.ttf') format('truetype');
+  src: url('/fonts/MaruBuri-Bold.otf') format('opentype');
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF; /* 한글 유니코드 범위 */
+}
+@font-face {
+  font-family: 'MaruBuriOtf-ExtraLight';
+  src: url('/fonts/MaruBuri-ExtraLight.ttf') format('truetype');
+  src: url('/fonts/MaruBuri-ExtraLight.otf') format('opentype');
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF; /* 한글 유니코드 범위 */
+}
+@font-face {
+  font-family: 'MaruBuriOtf-Light';
+  src: url('/fonts/MaruBuri-Light.ttf') format('truetype');
+  src: url('/fonts/MaruBuri-Light.otf') format('opentype');
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF; /* 한글 유니코드 범위 */
+}
+@font-face {
+  font-family: 'MaruBuriOtf-Regular';
+  src: url('/fonts/MaruBuri-Regular.ttf') format('truetype');
+  src: url('/fonts/MaruBuri-Regular.otf') format('opentype');
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF; /* 한글 유니코드 범위 */
+}
+@font-face {
+  font-family: 'MaruBuriOtf-SemiBold';
+  src: url('/fonts/MaruBuri-SemiBold.ttf') format('truetype');
+  src: url('/fonts/MaruBuri-SemiBold.otf') format('opentype');
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF; /* 한글 유니코드 범위 */
+}
+
+
+html {
+  transform: scale(0.9); /* 전체적으로 90% 크기로 축소 */
+  /* 중앙으로 변경 */ /* 스케일의 기준점을 왼쪽 상단으로 설정 */
+  margin: -1.25%; /*필요에 따라 조정*/
+
+}
+
+
+.line-1 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #767676;
+  border-width: 1px 0 0 0;
+  width: 240px;
+  height: 0px;
+  position: absolute;
+  left: 70px;
+  top: 190px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+
+
+
+
+
+
+body {
+  width: 100vw; /* 뷰포트 너비에 맞춤 */
+  height: 103vh; /* 뷰포트 높이에 맞춤 */
+  margin: 0; /* 기본 마진 제거 */
+  padding: 0;
+}
+
+.popular {
+  width: 33px;
+  height: 30px;
+  position: absolute;
+  left: 575px;
+  top: 580px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(-1, 1);
+  object-fit: cover;
+}
+
+
+
+/* 전체 페이지네이션 컨테이너 스타일 */
+#pagination-container {
+  position: absolute;  /* 상대 위치 설정 */
+  bottom: 0;           /* 하단에 위치 */
+  left: 55%;           /* 왼쪽 50% 위치 */
+  transform: translateX(-50%); /* 중앙 정렬 */
+  display: flex;
+  justify-content: center;  /* 중앙 정렬 */
+  top: calc(100% - 190px);
+}
+
+/* 페이지네이션 버튼 스타일 */
+.pagination {
+  display: flex;
+  align-items: center;  /* 아이템 중앙 정렬 */
+  gap: 10px;  /* 버튼 간격 */
+}
+
+.pagination div {
+  cursor: pointer;  /* 마우스 커서 포인터로 변경 */
+  padding: 10px 15px;  /* 여백 */
+  border-radius: 5px;  /* 모서리 둥글게 */
+  background-color: #f0f0f0;  /* 기본 배경 색상 */
+  transition: background-color 0.3s ease;  /* 배경 색상 변화 애니메이션 */
+}
+
+.pagination div:hover {
+  background-color: #d0d0d0;  /* 호버 시 배경 색상 변경 */
+}
+
+._active {
+  background-color: #007bff;  /* 현재 페이지 배경 색상 */
+  color: white;  /* 현재 페이지 글자 색상 */
+}
+
+
+
+
+.filter-rectangle {
+  background-color: #f0f0f0; /* 기본 색상 */
+  cursor: pointer; /* 커서 변경 */
+  /* 다른 스타일들 */
+}
+
+.filter-rectangle.active {
+  background-color: black; /* 클릭 시 색상 */
+  color: white; /* 텍스트 색상 */
+}
+
+.active {
+  background-color: black; /* 선택된 상태에서 검은색으로 변경 */
+}
+.hidden {
+  display: none; /* 조건에 맞지 않는 경우 숨김 */
+}
+
+.examples-landing-page {
+  background: var(--var-sds-color-background-default-default, #ffffff);
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 97px;
+  height: 87px;
+  position: relative;
+}
+.st-1-2 {
+  flex-shrink: 0;
+  width: 97px;
+  height: 87px;
+  position: relative;
+  object-fit: cover;
+}
+.header2 {
+  background: var(--var-sds-color-background-default-default, #ffffff);
+  border-style: solid;
+  border-color: var(--var-sds-color-border-default-default, #d9d9d9);
+  border-width: 0px 0px 1px 0px;
+  padding: var(--var-sds-size-space-800, 32px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--var-sds-size-space-1200, 48px);
+  row-gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-shrink: 0;
+  width: 1345px;
+  height: 88px;
+  position: relative;
+  overflow: hidden;
+}
+.scent-for-toi {
+  color: #767676;
+  text-align: left;
+  font-family: var(--heading-font-family, "Inter-SemiBold", sans-serif);
+  font-size: var(--heading-font-size, 24px);
+  line-height: var(--heading-line-height, 120%);
+  letter-spacing: var(--heading-letter-spacing, -0.02em);
+  font-weight: var(--heading-font-weight, 600);
+  position: relative;
+  width: 254px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.navigation-pill-list {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.navigation-pill {
+  border-radius: var(--var-sds-size-radius-200, 8px);
+  padding: var(--var-sds-size-space-200, 8px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--var-sds-size-space-200, 8px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.title {
+  color: var(--var-sds-color-text-default-default, #1e1e1e);
+  text-align: left;
+  font-family: var(
+    --single-line-body-base-font-family,
+    "Inter-Regular",
+    sans-serif);
+  font-size: var(--single-line-body-base-font-size, 16px);
+  line-height: var(--single-line-body-base-line-height, 100%);
+  font-weight: var(--single-line-body-base-font-weight, 400);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.title a {
+  color: inherit; /* 부모 요소의 색상을 상속받음 */
+  text-decoration: none; /* 밑줄 제거 */
+}
+.title2 a {
+  color: inherit; /* 부모 요소의 색상을 상속받음 */
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+.navigation-pill2 {
+  background: var(--var-sds-color-background-brand-tertiary, #f5f5f5);
+  border-radius: var(--var-sds-size-radius-200, 8px);
+  padding: var(--var-sds-size-space-200, 8px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--var-sds-size-space-200, 8px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.title2 {
+  color: var(--var-sds-color-text-brand-on-brand-secondary, #1e1e1e);
+  text-align: left;
+  font-family: var(
+    --single-line-body-base-font-family,
+    "Inter-Regular",
+    sans-serif
+  );
+  font-size: var(--single-line-body-base-font-size, 16px);
+  line-height: var(--single-line-body-base-line-height, 100%);
+  font-weight: var(--single-line-body-base-font-weight, 400);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.hero-image2 {
+  padding: var(--var-sds-size-space-4000, 160px) var(--var-sds-size-space-600, 24px) var(--var-sds-size-space-4000, 160px) var(--var-sds-size-space-600, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--var-sds-size-space-800, 32px);
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  height: 470px; /* 원하는 높이로 설정 (예: 500px) */
+  width: 100%; /* 너비를 100%로 설정 */
+}
+.hero-image2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.18); /* 흰색을 30% 투명도로 덧씌움 */
+  z-index: 0;
+}
+
+
+.text-content-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--var-sds-size-space-200, 8px);
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: var(--var-sds-size-space-400, 16px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.dare-to-be-different-dare-to-smell-irresistible {
+  color: rgba(0, 0, 0, 0.8); /* 검정색을 60% 투명하게 설정 */
+  text-align: right;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 32px;
+  line-height: 200%;
+  font-weight: 400;
+  position: absolute;
+  left: 1150px;
+  top: 326px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.frame-2 {
+  flex-shrink: 0;
+  width: 1440px;
+  height: 70px;
+  position: relative;
+  overflow: hidden;
+}
+.frame-1 {
+  background: rgba(255, 218, 199, 0.27);
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 2373px;
+  position: relative;
+  overflow: hidden;
+}
+.rectangle-23 {
+  background: #d9d9d9;
+  border-radius: 10px;
+  opacity: 0.5;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 722px;
+  top: 2257px;
+}
+.rectangle-1 {
+  background: #d9d9d9;
+  border-radius: var(--corner-large, 16px);
+  opacity: 0.5;
+  width: 289px;
+  height: 430px;
+  position: absolute;
+  left: 54px;
+  top: 57px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.currency {
+  width: 17px;
+  height: 16px;
+  position: absolute;
+  left: 145px;
+  top: 250px;
+  overflow: visible;
+}
+.currency2 {
+  width: 17px;
+  height: 16px;
+  position: absolute;
+  left: 145px;
+  top: 348px;
+  overflow: visible;
+}
+.currency3 {
+  width: 17px;
+  height: 16px;
+  position: absolute;
+  left: 143px;
+  top: 433px;
+  overflow: visible;
+}
+.rectangle-2 {
+  background: #ffffff;
+  border-radius: var(--corner-large, 16px);
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 248px;
+  height: 39px;
+  position: absolute;
+  left: 70px;
+  top: 88px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.div {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 838px;
+  top: 224px;
+  width: 313px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.search-outline {
+  width: 22px;
+  height: 24px;
+  position: absolute;
+  left: 268px;
+  top: 63px;
+}
+.search {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: -40.91%;
+  left: 40.91%;
+  bottom: -129.17%;
+  top: 129.17%;
+  overflow: visible;
+}
+.rectangle-3 {
+  background: #ffffff;
+  width: 1028px;
+  height: 579px;
+  position: absolute;
+  left: 368px;
+  top: 57px;
+}
+.rectangle-12 {
+  background: #ffffff;
+  width: 1028px;
+  height: 579px;
+  position: absolute;
+  left: 368px;
+  top: 57px;
+}
+.rectangle-13 {
+  background: #ffffff;
+  width: 1028px;
+  height: 579px;
+  position: absolute;
+  left: 382px;
+  top: 57px;
+}
+.rectangle-4 {
+  background: #ffffff;
+  border-radius: 0px 0px 30px 30px;
+  width: 331px;
+  height: 430px;
+  position: absolute;
+  left: 368px;
+  top: 692px;
+}
+._1-1 {
+  width: 214px;
+  height: 335px;
+  position: absolute;
+  left: 426px;
+  top: 692px;
+  object-fit: cover;
+}
+.rectangle-7 {
+  background: #d9d9d9;
+  border-radius: 0px 0px 30px 30px;
+  width: 333px;
+  height: 95px;
+  position: absolute;
+  left: 366px;
+  top: 1027px;
+}
+.rectangle-8 {
+  background: #ffffff;
+  border-radius: 0px 0px 30px 30px;
+  width: 331px;
+  height: 430px;
+  position: absolute;
+  left: 715px;
+  top: 692px;
+}
+._1-2 {
+  width: 214px;
+  height: 335px;
+  position: absolute;
+  left: 773px;
+  top: 692px;
+  object-fit: cover;
+}
+.rectangle-9 {
+  background: #d9d9d9;
+  border-radius: 0px 0px 30px 30px;
+  width: 333px;
+  height: 95px;
+  position: absolute;
+  left: 713px;
+  top: 1027px;
+}
+.rectangle-10 {
+  background: #ffffff;
+  border-radius: 0px 0px 30px 30px;
+  width: 331px;
+  height: 430px;
+  position: absolute;
+  left: 1063px;
+  top: 692px;
+}
+._1-3 {
+  width: 214px;
+  height: 335px;
+  position: absolute;
+  left: 1121px;
+  top: 692px;
+  object-fit: cover;
+}
+._2-1 {
+  width: 380px;
+  height: 507px;
+  position: absolute;
+  left: 393px;
+  top: 77px;
+  object-fit: cover;
+}
+.rectangle-11 {
+  background: #d9d9d9;
+  border-radius: 0px 0px 30px 30px;
+  width: 333px;
+  height: 95px;
+  position: absolute;
+  left: 1061px;
+  top: 1027px;
+}
+.div2 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 30px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 840px;
+  top: 107px;
+  width: 313px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div3 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 436px;
+  top: 1047px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div4 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 782px;
+  top: 1047px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div5 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 1131px;
+  top: 1047px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div6 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 840px;
+  top: 283px;
+  width: 177px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div7 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 838px;
+  top: 338px;
+  width: 313px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div8 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 1087px; /*  1113*/
+  top: 357px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div9 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 896px;
+  top: 495px;
+  width: 83px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div10 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 896px;
+  top: 549px;
+  width: 83px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div11 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 1087px;
+  top: 263px;
+  width: 313px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.mbti {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 840px;
+  top: 397px;
+  width: 313px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div12 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 583px;
+  top: 573px;
+  width: 313px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.star-outline {
+  width: 35px;
+  height: 34px;
+  position: absolute;
+  left: 533px;
+  top: 584px;
+}
+.star {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+  overflow: visible;
+}
+._200-000 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 167px;
+  top: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+._200-0002 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 167px;
+  top: 348px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+._100-000 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 167px;
+  top: 433px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.top {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 24px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 116px;
+  top: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.middle {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 24px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 116px;
+  top: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.base {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 24px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 116px;
+  top: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.price {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Bold", sans-serif;
+  font-size: 24px;
+  line-height: 100%;
+  font-weight: 700;
+  position: absolute;
+  left: 70px;
+  top: 157px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.rectangle-14 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 28px;
+  height: 29px;
+  position: absolute;
+  left: 70px;
+  top: 220px;
+}
+.rectangle-15 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 28px;
+  height: 29px;
+  position: absolute;
+  left: 70px;
+  top: 310px;
+}
+.rectangle-16 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 28px;
+  height: 29px;
+  position: absolute;
+  left: 70px;
+  top: 400px;
+}
+.back {
+  width: 28px;
+  height: 17px;
+  position: absolute;
+  left: 148px;
+  top: 433px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(-1, 1);
+  object-fit: cover;
+}
+.back2 {
+  width: 28px;
+  height: 17px;
+  position: absolute;
+  left: 148px;
+  top: 348px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(-1, 1);
+  object-fit: cover;
+}
+.back3 {
+  width: 28px;
+  height: 17px;
+  position: absolute;
+  left: 115px;
+  top: 250px;
+  object-fit: cover;
+}
+.plus1 {
+  width: 71px;
+  height: 64px;
+  position: absolute;
+  left: 501px;
+  top: 1090px;
+  object-fit: cover;
+}
+.plus2 {
+  width: 71px;
+  height: 64px;
+  position: absolute;
+  left: 846px;
+  top: 1090px;
+  object-fit: cover;
+}
+.plus3 {
+  width: 71px;
+  height: 64px;
+  position: absolute;
+  left: 1193px;
+  top: 1090px;
+  object-fit: cover;
+}
+.favorite {
+  width: 45px;
+  height: 60px;
+  position: absolute;
+  left: 640px;
+  top: 692px;
+  object-fit: cover;
+}
+.rectangle-17 {
+  background: #ffffff;
+  border-radius: 0px 0px 30px 30px;
+  width: 331px;
+  height: 430px;
+  position: absolute;
+  left: 370px;
+  top: 1231px;
+}
+._1-4 {
+  width: 214px;
+  height: 335px;
+  position: absolute;
+  left: 428px;
+  top: 1231px;
+  object-fit: cover;
+}
+.rectangle-18 {
+  background: #d9d9d9;
+  border-radius: 0px 0px 30px 30px;
+  width: 333px;
+  height: 95px;
+  position: absolute;
+  left: 368px;
+  top: 1566px;
+}
+.plus4 {
+  width: 71px;
+  height: 64px;
+  position: absolute;
+  left: 503px;
+  top: 1629px;
+  object-fit: cover;
+}
+.favorite2 {
+  width: 45px;
+  height: 60px;
+  position: absolute;
+  left: 642px;
+  top: 1231px;
+  object-fit: cover;
+}
+.rectangle-19 {
+  background: #ffffff;
+  border-radius: 0px 0px 30px 30px;
+  width: 331px;
+  height: 430px;
+  position: absolute;
+  left: 717px;
+  top: 1231px;
+}
+._1-5 {
+  width: 214px;
+  height: 335px;
+  position: absolute;
+  left: 775px;
+  top: 1231px;
+  object-fit: cover;
+}
+.rectangle-20 {
+  background: #d9d9d9;
+  border-radius: 0px 0px 30px 30px;
+  width: 333px;
+  height: 95px;
+  position: absolute;
+  left: 715px;
+  top: 1566px;
+}
+.plus5 {
+  width: 71px;
+  height: 64px;
+  position: absolute;
+  left: 850px;
+  top: 1629px;
+  object-fit: cover;
+}
+.favorite3 {
+  width: 45px;
+  height: 60px;
+  position: absolute;
+  left: 989px;
+  top: 1231px;
+  object-fit: cover;
+}
+.favorite4 {
+  width: 45px;
+  height: 60px;
+  position: absolute;
+  left: 997px;
+  top: 692px;
+  object-fit: cover;
+}
+.favorite5 {
+  width: 45px;
+  height: 60px;
+  position: absolute;
+  left: 1345px;
+  top: 692px;
+  object-fit: cover;
+}
+.rectangle-21 {
+  background: #ffffff;
+  border-radius: 0px 0px 30px 30px;
+  width: 331px;
+  height: 430px;
+  position: absolute;
+  left: 1063px;
+  top: 1231px;
+}
+._1-6 {
+  width: 214px;
+  height: 335px;
+  position: absolute;
+  left: 1121px;
+  top: 1231px;
+  object-fit: cover;
+}
+.rectangle-22 {
+  background: #d9d9d9;
+  border-radius: 0px 0px 30px 30px;
+  width: 333px;
+  height: 95px;
+  position: absolute;
+  left: 1061px;
+  top: 1566px;
+}
+.rectangle-27 {
+  background: #d9d9d9;
+  border-radius: 0px 0px 30px 30px;
+  width: 333px;
+  height: 95px;
+  position: absolute;
+  left: 372px;
+  top: 2084px;
+}
+.rectangle-28 {
+  background: #d9d9d9;
+  border-radius: 0px 0px 30px 30px;
+  width: 333px;
+  height: 95px;
+  position: absolute;
+  left: 720px;
+  top: 2084px;
+}
+.rectangle-29 {
+  background: #d9d9d9;
+  border-radius: 0px 0px 30px 30px;
+  width: 333px;
+  height: 95px;
+  position: absolute;
+  left: 1060px;
+  top: 2084px;
+}
+.div13 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 24px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 1130px;
+  top: 1585px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.plus6 {
+  width: 71px;
+  height: 64px;
+  position: absolute;
+  left: 1196px;
+  top: 1629px;
+  object-fit: cover;
+}
+.favorite6 {
+  width: 45px;
+  height: 60px;
+  position: absolute;
+  left: 1335px;
+  top: 1231px;
+  object-fit: cover;
+}
+.full-stop {
+  width: 26px;
+  height: 25px;
+  position: absolute;
+  left: 793px;
+  top: 300px;
+  object-fit: cover;
+}
+.full-stop2 {
+  width: 26px;
+  height: 25px;
+  position: absolute;
+  left: 793px;
+  top: 240px;
+  object-fit: cover;
+}
+.full-stop3 {
+  width: 26px;
+  height: 25px;
+  position: absolute;
+  left: 793px;
+  top: 352px;
+  object-fit: cover;
+}
+.full-stop4 {
+  width: 26px;
+  height: 25px;
+  position: absolute;
+  left: 793px;
+  top: 413px;
+  object-fit: cover;
+}
+.full-stop5 {
+  width: 26px;
+  height: 25px;
+  position: absolute;
+  left: 1041px;
+  top: 362px;
+  object-fit: cover;
+}
+.full-stop6 {
+  width: 26px;
+  height: 25px;
+  position: absolute;
+  left: 1041px;
+  top: 275px;
+  object-fit: cover;
+}
+._1 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 732px;
+  top: 2258px;
+  width: 12px;
+}
+._2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 775px;
+  top: 2258px;
+  width: 12px;
+}
+._3 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 818px;
+  top: 2258px;
+  width: 12px;
+}
+._4 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 861px;
+  top: 2258px;
+}
+._5 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 908px;
+  top: 2258px;
+}
+.forward {
+  width: 42px;
+  height: 36px;
+  position: absolute;
+  left: 934px;
+  top: 2255px;
+  object-fit: cover;
+}
+.div14 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 24px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 435px;
+  top: 1585px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.rectangle-24 {
+  background: #ffffff;
+  border-radius: 0px 0px 30px 30px;
+  width: 331px;
+  height: 430px;
+  position: absolute;
+  left: 370px;
+  top: 1749px;
+}
+._1-7 {
+  width: 214px;
+  height: 335px;
+  position: absolute;
+  left: 428px;
+  top: 1749px;
+  object-fit: cover;
+}
+.plus7 {
+  width: 71px;
+  height: 64px;
+  position: absolute;
+  left: 503px;
+  top: 2147px;
+  object-fit: cover;
+}
+.favorite7 {
+  width: 45px;
+  height: 60px;
+  position: absolute;
+  left: 642px;
+  top: 1749px;
+  object-fit: cover;
+}
+.div15 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 24px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 435px;
+  top: 2103px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.rectangle-25 {
+  background: #ffffff;
+  border-radius: 0px 0px 30px 30px;
+  width: 331px;
+  height: 430px;
+  position: absolute;
+  left: 720px;
+  top: 1749px;
+}
+._1-8 {
+  width: 214px;
+  height: 335px;
+  position: absolute;
+  left: 778px;
+  top: 1749px;
+  object-fit: cover;
+}
+.plus8 {
+  width: 71px;
+  height: 64px;
+  position: absolute;
+  left: 853px;
+  top: 2147px;
+  object-fit: cover;
+}
+.favorite8 {
+  width: 45px;
+  height: 60px;
+  position: absolute;
+  left: 992px;
+  top: 1749px;
+  object-fit: cover;
+}
+.div16 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 24px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 785px;
+  top: 2103px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.rectangle-26 {
+  background: #ffffff;
+  border-radius: 0px 0px 30px 30px;
+  width: 331px;
+  height: 430px;
+  position: absolute;
+  left: 1061px;
+  top: 1749px;
+}
+._1-9 {
+  width: 214px;
+  height: 335px;
+  position: absolute;
+  left: 1119px;
+  top: 1749px;
+  object-fit: cover;
+}
+.plus9 {
+  width: 71px;
+  height: 64px;
+  position: absolute;
+  left: 1194px;
+  top: 2147px;
+  object-fit: cover;
+}
+.favorite9 {
+  width: 45px;
+  height: 60px;
+  position: absolute;
+  left: 1333px;
+  top: 1749px;
+  object-fit: cover;
+}
+.div17 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 24px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 1126px;
+  top: 2103px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.div18 {
+  color: #000000;
+  text-align: left;
+  font-family: "MaruBuriOtf-Regular", sans-serif;
+  font-size: 24px;
+  line-height: 100%;
+  font-weight: 400;
+  position: absolute;
+  left: 788px;
+  top: 1585px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

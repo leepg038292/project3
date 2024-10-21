@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>향수 추천 AI</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/향수4.css' %}">
+</head>
+<body>
+    <!-- Home Screen -->
+    <div id="home-screen" class="screen">
+        <h1>향수 4</h1>
+        <p>나만의 어울리는 향수 추천 AI</p>
+        <button onclick="showTestScreen()">Test 하러 가기</button>
+    </div>
+
+    <!-- Test Screen 1 -->
+    <div id="test-screen" class="screen hidden">
+        <h2>당신의 성별은 무엇인가요? (1/10)</h2>
+        <div class="options">
+            <div class="option" id="male-option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\정해인.jpg" alt="남자" />
+                <p>남자</p>
+            </div>
+            <div class="option" id="female-option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\카리나.jpg" alt="여자" />
+                <p>여자</p>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="nextQuestion()">다음</button>
+        </div>
+    </div>
+
+    <!-- Test Screen 2 -->
+    <div id="test-screen-2" class="screen hidden">
+        <h2>향수를 사용할 계절은? (2/10)</h2>
+        <div class="options">
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\봄.jpg" alt="봄" />
+                <p>봄</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>여름</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\가을.jpg" alt="가을" />
+                <p>가을</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\겨울.jpg" alt="겨울" />
+                <p>겨울</p>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="previousQuestion()">이전</button>
+            <button onclick="nextQuestion()">다음</button>
+        </div>
+    </div>
+
+    <div id="test-screen-3" class="screen hidden">
+        <h2>향수를 사용할 시간대는? (3/10)</h2>
+        <div class="options">
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\봄.jpg" alt="봄" />
+                <p>낮</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>밤</p>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="previousQuestion()">이전</button>
+            <button onclick="nextQuestion()">다음</button>
+        </div>
+    </div>
+
+    <div id="test-screen-4" class="screen hidden">
+        <h2>평소 선호하는 스타일은? (4/10)</h2>
+        <div class="options">
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\봄.jpg" alt="봄" />
+                <p>클래식</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>모던/미니멀</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>로맨틱</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>보헤미안</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>스포티/캐주얼</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>럭셔리</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>레트로/빈티지</p>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="previousQuestion()">이전</button>
+            <button onclick="nextQuestion()">다음</button>
+        </div>
+    </div>
+
+    <div id="test-screen-5" class="screen hidden">
+        <h2>나의 MBTI? (5/10)</h2>
+        <div class="options">
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\봄.jpg" alt="봄" />
+                <p>지성</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>건성</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>복합성</p>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="previousQuestion()">이전</button>
+            <button onclick="nextQuestion()">다음</button>
+        </div>
+    </div>
+
+    <div id="test-screen-6" class="screen hidden">
+        <h2>나의 피부타입은? (6/10)</h2>
+        <div class="options">
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\봄.jpg" alt="봄" />
+                <p>지성</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>건성</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>민감성</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>복합성</p>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="previousQuestion()">이전</button>
+            <button onclick="nextQuestion()">다음</button>
+        </div>
+    </div>
+
+    <div id="test-screen-7" class="screen hidden">
+        <h2>선호하는 향? (7/10)</h2>
+        <div class="options">
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\봄.jpg" alt="봄" />
+                <p>지성</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>건성</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>복합성</p>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="previousQuestion()">이전</button>
+            <button onclick="nextQuestion()">다음</button>
+        </div>
+    </div>
+
+    <div id="test-screen-8" class="screen hidden">
+        <h2>선호하지 않는 향? (8/10)</h2>
+        <div class="options">
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\봄.jpg" alt="봄" />
+                <p>지성</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>건성</p>
+            </div>
+            <div class="option" onclick="selection(this)">
+                <img src="C:\Users\USER\PycharmProjects\front-service\image\여름.jpg" alt="여름" />
+                <p>복합성</p>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="previousQuestion()">이전</button>
+            <button onclick="nextQuestion()">다음</button>
+        </div>
+    </div>
+
+    <script src="{% static 'js/향수4.js' %}"></script>
+</body>
+</html>
+ 

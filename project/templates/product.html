@@ -1,0 +1,586 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/product_style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/product_vars.css' %}">
+  
+  
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   .filter-rectangle {
+    cursor: pointer;
+    /* 기본 스타일 추가 */
+  }
+  .active {
+    background-color: black; /* 선택된 상태에서 검은색으로 변경 */
+  }
+  .hidden {
+    display: none; /* 조건에 맞지 않는 경우 숨김 */
+  }
+  
+   </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="examples-landing-page">
+    <div class="header">
+      <img class="st-1-2" src="{% static 'images/st-1-20.png' %}" />
+      <div class="header2">
+        <div class="scent-for-toi">SCENT FOR TOI</div>
+        <div class="navigation-pill-list">
+          <div class="navigation-pill">
+            <div class="title">
+            <a href="{% url 'mainpage' %}">
+              About
+           </a>
+            </div>
+          </div>
+          <div class="navigation-pill2">
+            <div class="title2"><a href="{% url 'Product' %}">
+              Products
+           </a></div>
+          </div>
+          <div class="navigation-pill">
+            <div class="title">Chatbot</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="hero-image2"
+      style="
+        background: url({% static 'images/hero-image2.png' %}) center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      "
+    >
+      <div class="text-content-title"></div>
+      <div class="button-group"></div>
+      <div class="dare-to-be-different-dare-to-smell-irresistible">
+        Dare to be different,
+        <br />
+        Dare to smell irresistible
+      </div>
+    </div>
+    
+    <div class="frame-2"></div>
+    <div class="frame-1">
+      <div class="rectangle-1"></div>
+      <img class="currency" src="{% static 'images/currency0.svg' %}" />
+      <img class="currency2" src="{% static 'images/currency1.svg' %}" />
+      <img class="currency3" src="{% static 'images/currency2.svg' %}" />
+       <!-- 브랜드 입력 폼 시작 -->
+       <form action="{% url 'get_items_by_brand' %}" method="GET" id="brandSearchForm">
+        <div class="rectangle-2">
+          <input type="text" name="brand" placeholder="   Enter brand name" id="brandInput">
+        </div>
+        <div class="search-outline">
+          <button type="submit">
+            <img class="search" src="{% static 'images/search0.svg' %}" alt="Search" />
+          </button>
+        </div>
+      </form>
+      <script>
+        document.getElementById('brandSearchForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          var brand = document.getElementById('brandInput').value;
+          window.location.href = "{% url 'get_items_by_brand' %}?brand=" + encodeURIComponent(brand);
+        });
+      </script>
+  <!-- 브랜드 입력 폼 끝 -->
+
+      
+      <div class="div">성별</div>
+      {% comment %} <div class="search-outline">
+        <img class="search" src="{% static 'images/search0.svg' %}" />
+      </div> {% endcomment %}
+      <div class="rectangle-3"></div>
+      <div class="rectangle-12"></div>
+      <div class="rectangle-13"></div>
+      <div class="rectangle-4"></div>
+      <img class="_1-1" src="{% static 'images/_1-10.png' %}" />
+      <div class="rectangle-7"></div>
+      <div class="rectangle-8"></div>
+      <img class="_1-2" src="{% static 'images/_1-30.png' %}" />
+      <div class="rectangle-9"></div>
+      <div class="rectangle-10"></div>
+      <img class="_1-3" src="{% static 'images/_1-30.png' %}" />
+      <img class="_2-1" src={{ top_item.Image }} />
+      <div class="rectangle-11"></div>
+      {% comment %} <div class="div2">[브랜드] 향수 이름</div> {% endcomment %}
+      <div class= 'line-1'></div>
+      {% comment %} <div class="div">성별</div>
+      <div class="div6">가격</div>
+      <div class="div7">지속력</div>
+      <div class="div8">스타일</div>
+      <div class="div9">긍정</div>
+      <div class="div10">부정</div>
+      <div class="div11">피부타입</div>
+      <div class="mbti">MBTI</div>
+      <div class="div12">별점</div> {% endcomment %}
+       
+      
+        <img class="popular" src="{% static 'images/popular0.png' %}" />
+      
+      <!--최상위 정보 -->
+      <div id="top-product-container">
+        {% if top_item %}
+        <div class="top-product" data-price="{{ item.Price }}" >
+            
+            <div class="div2">[{{ top_item.Brand }}] {{ top_item.P_name }}</div>
+            <div class="div">성별: {{ top_item.Gender }}</div>
+            <div class="div6">가격: {{ top_item.Price }}</div>
+            <div class="div7">지속력: {{ top_item.Longetivity }}</div>
+            <div class="div8">스타일: {{ top_item.Style }}</div>
+            <div class="div9">긍정</div>
+            <div class="div10">부정</div>
+            <div class="div11">피부타입: {{ top_item.Skint_ype }}</div>
+            <div class="mbti">MBTI: {{ top_item.MBTI }}</div>
+            <div class="div12">
+                별점: {{ top_item.Rate }}
+                
+            </div>
+        </div>
+    {% endif %}
+      </div>
+      <div class="_200-000">200,000</div>
+      <div class="_200-0002">200,000</div>
+      <div class="_100-000">100,000</div>
+      <div class="top">TOP</div>
+      <div class="middle">MIDDLE</div>
+      <div class="base">BASE</div>
+      <div class="price">PRICE</div>
+      <div class="rectangle-14 filter-rectangle" onclick="Filter_Items('above200')"></div>
+      <div class="rectangle-15 filter-rectangle" onclick="Filter_Items('below200')"></div>
+      <div class="rectangle-16 filter-rectangle" onclick="Filter_Items('below100')"></div>
+
+      <div id="pagination-container">
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <div class="_prev" onclick="goToPage({{ page_obj.previous_page_number }})">이전</div>
+            {% endif %}
+            
+            {% for num in page_obj.paginator.page_range %}
+                {% if num >= page_obj.number|add:-2 and num <= page_obj.number|add:2 %}
+                    <div class="{% if num == page_obj.number %} _active {% endif %}" onclick="goToPage({{ num }})">{{ num }}</div>
+                {% endif %}
+            {% endfor %}
+            
+            {% if page_obj.has_next %}
+                <div class="_next" onclick="goToPage({{ page_obj.next_page_number }})">다음</div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <script>
+      function goToPage(page) {
+        // URLSearchParams를 이용해 현재 URL에서 필터 값 추출
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // 현재 필터 값들 가져오기
+        const brand = urlParams.get('brand');
+        const price_range = urlParams.get('price_range');
+    
+        // 새 페이지 번호 추가
+        urlParams.set('page', page);
+    
+        // 필터 값이 있으면 그대로 유지
+        if (brand) {
+            urlParams.set('brand', brand);
+        }
+        
+        if (price_range) {
+            urlParams.set('price_range', price_range);
+        }
+    
+        // 새 URL로 이동
+        window.location.href = `?${urlParams.toString()}`;
+    }
+    
+    // URL에서 brand 필터 값 추출하는 함수
+    function getBrandFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('brand');
+    }
+    
+    // URL에서 price_range 필터 값 추출하는 함수
+    function getPriceRangeFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('price_range');
+    }
+  </script>
+  
+
+
+    <img class="back" src="{% static 'images/back0.png' %}" />
+    <img class="back2" src="{% static 'images/back1.png' %}" />
+    <img class="back3" src="{% static 'images/back2.png' %}" />
+    <img class="plus1" src="{% static 'images/plus0.png' %}" />
+    <img class="plus2" src="{% static 'images/plus1.png' %}" />
+    <img class="plus3" src="{% static 'images/plus2.png' %}" />
+    <img class="favorite" src="{% static 'images/favorite0.png' %}" />
+    <div class="rectangle-17"></div>
+    <img class="_1-4" src="{% static 'images/_1-40.png' %}" />
+    <div class="rectangle-18"></div>
+    <img class="plus4" src="{% static 'images/plus3.png' %}" />
+    <img class="favorite2" src="{% static 'images/favorite1.png' %}" />
+    <div class="rectangle-19"></div>
+    <img class="_1-5" src="{% static 'images/_1-50.png' %}" />
+    <div class="rectangle-20"></div>
+    <img class="plus5" src="{% static 'images/plus4.png' %}" />
+    <img class="favorite3" src="{% static 'images/favorite2.png' %}" />
+    <img class="favorite4" src="{% static 'images/favorite3.png' %}" />
+    <img class="favorite5" src="{% static 'images/favorite4.png' %}" />
+    <div class="rectangle-21"></div>
+    <img class="_1-6" src="{% static 'images/_1-60.png' %}" />
+    <div class="rectangle-22"></div>
+    
+    
+    <div class="rectangle-24"></div>
+    <div class="rectangle-25"></div>
+    <div class="rectangle-26"></div>
+
+    <div class="rectangle-27"></div>
+    <div class="rectangle-28"></div>
+    <div class="rectangle-29"></div>
+
+ <!-- 작은 박스 브랜드명, 향수 이름-->
+    
+
+   
+
+    <img class="plus6" src="{% static 'images/plus5.png' %}" />
+    <img class="favorite6" src="{% static 'images/favorite4.png' %}" />
+    <img class="full-stop" src="{% static 'images/full-stop0.png' %}" />
+    <img class="full-stop2" src="{% static 'images/full-stop1.png' %}" />
+    <img class="full-stop3" src="{% static 'images/full-stop2.png' %}" />
+    <img class="full-stop4" src="{% static 'images/full-stop3.png' %}" />
+    <img class="full-stop5" src="{% static 'images/full-stop4.png' %}" />
+    <img class="full-stop6" src="{% static 'images/full-stop5.png' %}" />
+
+    
+  
+    <img class="_1-7" src="{% static 'images/_1-70.png' %}" />
+    <img class="plus7" src="{% static 'images/plus6.png' %}" />
+    <img class="favorite7" src="{% static 'images/favorite6.png' %}" />
+   
+ 
+    <img class="_1-8" src="{% static 'images/_1-80.png' %}" />
+    <img class="plus8" src="{% static 'images/plus7.png' %}" />
+    <img class="favorite8" src="{% static 'images/favorite7.png' %}" />
+   
+    <img class="_1-9" src="{% static 'images/_1-90.png' %}" />
+    <img class="plus9" src="{% static 'images/plus8.png' %}" />
+    <img class="favorite9" src="{% static 'images/favorite8.png' %}" />
+
+
+      <div id="product-container">
+        <div class="product" data-price="{{ item.Price }}">
+        <img class="_1-1" src="{% static 'images/_1-10.png' %}" />
+        <img class="_1-2" src="{% static 'images/_1-20.png' %}" />
+        <img class="_1-3" src="{% static 'images/_1-30.png' %}" />
+        <img class="_1-4" src="{% static 'images/_1-40.png' %}" />
+        <img class="_1-5" src="{% static 'images/_1-50.png' %}" />
+        <img class="_1-6" src="{% static 'images/_1-60.png' %}" />
+        <img class="_1-7" src="{% static 'images/_1-70.png' %}" />
+        <img class="_1-8" src="{% static 'images/_1-80.png' %}" />
+        <img class="_1-9" src="{% static 'images/_1-90.png' %}" />
+        </div>
+    </div> 
+    <div id="product-info-container">
+      {% for item in page_obj %}
+        <div class="product" data-price="{{ item.Price }}">
+          {% if forloop.counter == 1 %}
+            <div class="div3">[{{ item.Brand }}] {{ item.P_name }}</div>
+          {% elif forloop.counter == 2 %}
+            <div class="div4">[{{ item.Brand }}] {{ item.P_name }}</div>
+          {% elif forloop.counter == 3 %}
+            <div class="div5">[{{ item.Brand }}] {{ item.P_name }}</div>
+          {% elif forloop.counter == 4 %}
+            <div class="div14">[{{ item.Brand }}] {{ item.P_name }}</div>
+          {% elif forloop.counter == 5 %}
+            <div class="div18">[{{ item.Brand }}] {{ item.P_name }}</div>
+          {% elif forloop.counter == 6 %}
+            <div class="div13">[{{ item.Brand }}] {{ item.P_name }}</div>
+          {% elif forloop.counter == 7 %}
+            <div class="div15">[{{ item.Brand }}] {{ item.P_name }}</div>
+          {% elif forloop.counter == 8 %}
+            <div class="div16">[{{ item.Brand }}] {{ item.P_name }}</div>
+          {% elif forloop.counter == 9 %}
+            <div class="div17">[{{ item.Brand }}] {{ item.P_name }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    
+    <div id="product-image-container">
+      {% for item in page_obj %}
+        <div class="product" data-price="{{ item.Price }}">
+          <img class="_1-{{ forloop.counter }} product-image" 
+               src="{{ item.Image }}" 
+               alt="{{ item.P_name }}" 
+               data-price="{{ item.Price }}" />
+          {% with plus_index=forloop.counter|add:"-1" %}
+            <img class="plus{{ forloop.counter }} plus-image" 
+                 src="{% static 'images/plus' %}{{ plus_index }}.png" 
+                 alt="Plus" 
+                 onclick="showPerfumeInfo('{{ item.Brand }}', '{{ item.P_name }}', '{{ item.Gender }}', '{{ item.Price }}', '{{ item.Longetivity }}', '{{ item.Style }}', '{{ item.Skint_ype }}', '{{ item.MBTI }}', '{{ item.Rate }}', '{{ item.Image }}'); scrollToTop();" 
+                 data-price="{{ item.Price }}" />
+          {% endwith %}
+        </div>
+      {% endfor %}
+    </div>
+
+
+    <script>
+      // 글로벌 변수로 브랜드 정보를 저장
+      let currentBrand = null;
+  
+      // 향수 정보 표시 함수
+      function showPerfumeInfo(brand, name, gender, price, longevity, style, skintype, mbti, rate, imageUrl) {
+          const topProductContainer = document.querySelector('.top-product');
+  
+          topProductContainer.innerHTML = `
+              <div class="div2">[${brand}] ${name}</div>
+              <div class="div">성별: ${gender}</div>
+              <div class="div6">가격: ${price}</div>
+              <div class="div7">지속력: ${longevity}</div>
+              <div class="div8">스타일: ${style}</div>
+              <div class="div9">긍정</div>
+              <div class="div10">부정</div>
+              <div class="div11">피부타입: ${skintype}</div>
+              <div class="mbti">MBTI: ${mbti}</div>
+              <div class="div12">별점: ${rate}</div>
+              <img src="${imageUrl}" class="_2-1">
+          `;
+      }
+  
+      // 최상위 데이터 업데이트 함수
+      function updateTopProductInfo(item) {
+          const topProductContainer = document.querySelector('.top-product');
+          topProductContainer.innerHTML = `
+              <div class="div2">[${item.Brand}] ${item.P_name}</div>
+              <div class="div">성별: ${item.Gender}</div>
+              <div class="div6">가격: ${item.Price}</div>
+              <div class="div7">지속력: ${item.Longetivity}</div>
+              <div class="div8">스타일: ${item.Style}</div>
+              <div class="div9">긍정</div>
+              <div class="div10">부정</div>
+              <div class="div11">피부타입: ${item.Skint_ype}</div>
+              <div class="mbti">MBTI: ${item.MBTI}</div>
+              <div class="div12">별점: ${item.Rate}</div>
+              <img src="${item.Image}" class="_2-1">
+          `;
+      }
+  
+      // 스크롤 최상단으로 이동
+      function scrollToTop() {
+          const topProductContainer = document.getElementById('top-product-container');
+          topProductContainer.scrollIntoView({ behavior: 'smooth' });
+      }
+  
+      // 필터링 함수
+      function filterByPrice(priceRange) {
+          // 브랜드 정보를 유지하여 쿼리 문자열에 추가
+          const url = `../filter-items?price_range=${priceRange}&brand=${currentBrand ? currentBrand : ''}`;
+  
+          fetch(url)
+              .then(response => {
+                  if (!response.ok) {
+                      throw new Error('Network response was not ok');
+                  }
+                  return response.json();
+              })
+              .then(data => {
+                  const productContainer = document.getElementById('product-container2');
+                  productContainer.innerHTML = '';  // 기존 제품 목록 초기화
+  
+                  // 새로운 제품 목록 추가
+                  data.items.forEach((item, index) => {
+                      const productDiv = document.createElement('div');
+                      productDiv.classList.add('product');
+                      productDiv.setAttribute('data-price', item.Price);
+                      
+                      const itemDiv = document.createElement('div');
+                      itemDiv.classList.add('div-class'); // 필요에 따라 클래스를 추가
+                      itemDiv.innerHTML = `[${item.Brand}] ${item.P_name}`;
+                      productDiv.appendChild(itemDiv);
+  
+                      const image = document.createElement('img');
+                      image.classList.add('product-image');
+                      image.src = item.Image;
+                      image.alt = item.P_name;
+                      productDiv.appendChild(image);
+  
+                      productContainer.appendChild(productDiv);
+  
+                      // 첫 번째 제품을 최상위 데이터로 설정
+                      if (index === 0) {
+                          updateTopProductInfo(item);
+                      }
+                  });
+              })
+              .catch(error => {
+                  console.error('There has been a problem with your fetch operation:', error);
+              });
+      }
+  
+      // 필터링 요청 함수
+      // 필터링 요청 함수
+function Filter_Items(priceRange) {
+  // 브랜드 정보를 현재 브랜드에 저장
+  const previousBrand = currentBrand;  // 현재 브랜드 저장
+  currentBrand = getCurrentBrand();  // 브랜드 정보를 가져오는 함수를 호출
+  const currentButton = event.currentTarget; // 클릭한 버튼
+
+  // 현재 버튼이 active 클래스가 있는지 확인
+  const isActive = currentButton.classList.contains('active');
+
+  // 모든 필터 버튼에서 active 클래스 제거
+  const filterButtons = document.querySelectorAll('.filter-rectangle');
+  filterButtons.forEach(button => {
+      button.classList.remove('active'); // 모든 버튼에서 active 클래스 제거
+  });
+
+  if (!isActive) {
+      currentButton.classList.add('active'); // 클릭한 버튼에 active 클래스 추가
+      fetch(`../filter-items?price_range=${priceRange}&brand=${currentBrand ? currentBrand : ''}`)
+          .then(response => response.json())
+          .then(data => {
+              updateProductContainers(data.items);
+          })
+          .catch(error => console.error('Error fetching data:', error));
+  } else {
+      // active 클래스가 있다면 필터를 해제하고 이전 브랜드의 데이터로 업데이트
+      if (previousBrand) {
+          fetch(`../filter-items?brand=${previousBrand}`)
+              .then(response => response.json())
+              .then(data => {
+                  updateProductContainers(data.items); // 이전 브랜드의 데이터로 업데이트
+              })
+              .catch(error => console.error('Error fetching data:', error));
+      } else {
+          // 브랜드 정보가 없으면 전체 데이터로 업데이트
+          fetch(`../filter-items`)
+              .then(response => response.json())
+              .then(data => {
+                  updateProductContainers(data.items); // 전체 데이터로 업데이트
+              })
+              .catch(error => console.error('Error fetching data:', error));
+      }
+  }
+}
+
+  
+      // 현재 브랜드 정보를 가져오는 함수 (예시)
+      function getCurrentBrand() {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get('brand'); // 쿼리에서 브랜드를 가져옴
+      }
+  
+      // 제품 컨테이너 업데이트 함수
+      function updateProductContainers(items) {
+          const infoContainer = document.getElementById('product-info-container');
+          const imageContainer = document.getElementById('product-image-container');
+          const topProductContainer = document.querySelector('.top-product');
+  
+          infoContainer.innerHTML = '';
+          imageContainer.innerHTML = '';
+  
+          const maxItems = Math.min(items.length, 9);
+  
+          if (items.length > 0) {
+              // 최상위 정보 업데이트
+              const topItem = items[0];
+              updateTopProductInfo(topItem);
+          } else {
+              topProductContainer.innerHTML = `
+                  <div class="div2">[브랜드] 향수 이름</div>
+                  <div class="div">성별: </div>
+                  <div class="div6">가격: </div>
+                  <div class="div7">지속력: </div>
+                  <div class="div8">스타일: </div>
+                  <div class="div9">긍정</div>
+                  <div class="div10">부정</div>
+                  <div class="div11">피부타입: </div>
+                  <div class="mbti">MBTI: </div>
+                  <div class="div12">별점: </div>
+              `; // 필터링 결과가 없을 경우 최상위 정보 비우기
+          }
+  
+          for (let index = 0; index < maxItems; index++) {
+              const item = items[index];
+  
+              // 정보 컨테이너 업데이트
+              const infoDiv = document.createElement('div');
+              infoDiv.classList.add('product');
+              infoDiv.setAttribute('data-price', item.Price);
+              infoDiv.innerHTML = `<div class="${getInfoClassName(index)}">[${item.Brand}] ${item.P_name}</div>`;
+              infoContainer.appendChild(infoDiv);
+  
+              // 이미지 컨테이너 업데이트
+              const imageDiv = document.createElement('div');
+              imageDiv.classList.add('product');
+              imageDiv.setAttribute('data-price', item.Price);
+              imageDiv.innerHTML = `
+                  <img class="_1-${index + 1} product-image" 
+                       src="${item.Image}" 
+                       alt="${item.P_name}" 
+                       data-price="${item.Price}" />
+                  <img class="plus${index + 1} plus-image" 
+                       src="{% static 'images/plus' %}${index}.png" 
+                       alt="Plus" 
+                       onclick="showPerfumeInfo('${item.Brand}', '${item.P_name}', '${item.Gender}', '${item.Price}', '${item.Longetivity}', '${item.Style}', '${item.Skint_ype}', '${item.MBTI}', '${item.Rate}', '${item.Image}'); scrollToTop();" 
+                       data-price="${item.Price}" />
+              `;
+              imageContainer.appendChild(imageDiv);
+          }
+      }
+  
+      // 클래스 이름 반환 함수
+      function getInfoClassName(index) {
+          const classNames = ['div3', 'div4', 'div5', 'div14', 'div18', 'div13', 'div15', 'div16', 'div17'];
+          return classNames[index] || '';
+      }
+  </script>
+  
+      
+
+
+  </div>
+</div>
+
+
+
+</body>
+</html>

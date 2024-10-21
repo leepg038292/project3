@@ -1,0 +1,31 @@
+<!-- search/templates/search/item_detail.html -->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ item.Name }} 상세 정보</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ item.Name }}</h1>
+        <img src="{{ item.Image }}" alt="{{ item.Name }}" class="item-image">
+
+        <div class="item-details">
+            <p><strong>브랜드:</strong> {{ item.Brand }}</p>
+            <p><strong>가격:</strong> {{ item.Price }} 원</p>
+            <p><strong>평점:</strong> {{ item.Rate }}</p>
+            <p><strong>설명:</strong> {{ item.description }}</p>
+            <p><strong>주요 성분:</strong> {{ item.Main_Components }}</p>
+            <p><strong>상위 노트:</strong> {{ item.Top_Notes }}</p>
+            <p><strong>중간 노트:</strong> {{ item.Middle_Notes }}</p>
+            <p><strong>기본 노트:</strong> {{ item.Base_Notes }}</p>
+            <p><strong>지속력:</strong> {{ item.Longetivity }}</p>
+        </div>
+
+        <a href="{% url 'item_list' %}">목록으로 돌아가기</a>
+    </div>
+</body>
+</html>

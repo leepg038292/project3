@@ -1,0 +1,58 @@
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure GPT 연동 예시</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- 홈 화면 -->
+    <div id="home-screen" class="screen active">
+        <h1>향수 추천 시스템</h1>
+        <p>선호하는 정보를 입력해주세요.</p>
+        
+        <!-- 사용자 입력 폼 -->
+        <form id="perfume-form" class="form-container">
+            {% csrf_token %}
+            <label for="gender">성별:</label>
+            <input type="text" id="gender" placeholder="예: 여자">
+            
+            <label for="season">계절:</label>
+            <input type="text" id="season" placeholder="예: 봄">
+            
+            <label for="time">사용 시간:</label>
+            <input type="text" id="time" placeholder="예: 낮">
+            
+            <label for="style">스타일:</label>
+            <input type="text" id="style" placeholder="예: 클래식">
+            
+            <label for="skinType">피부 타입:</label>
+            <input type="text" id="skinType" placeholder="예: 건성">
+            
+            <label for="preferredScent">선호하는 향:</label>
+            <input type="text" id="preferredScent" placeholder="예: 바닐라">
+            
+            <label for="unpreferredScent">비선호 향:</label>
+            <input type="text" id="unpreferredScent" placeholder="예: 라벤더">
+        </form>
+        
+        <!-- 정보 전달 버튼 -->
+        <button onclick="sendOptionsToBackend()">향수 추천 받기</button>
+        
+        <!-- 결과 출력 영역 -->
+        <div id="gpt-response-container">
+            <h2>GPT 응답:</h2>
+            <p id="gpt-response"></p>
+        </div>
+    </div>
+    
+    <script src="{% static 'js/script.js' %}" defer></script>
+</body>
+</html>

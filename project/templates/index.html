@@ -1,0 +1,132 @@
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/vars.css' %}">
+  
+  
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="examples-landing-page">
+    <div class="header">
+      <img class="st-1-2" src="{% static 'images/st-1-20.png' %}"/>
+      <div class="header2">
+        <div class="navigation-pill-list">
+          <div class="navigation-pill">
+            <div class="title"><a href="{% url 'mainpage' %}">
+              About
+           </a></div>
+          </div>
+          <div class="navigation-pill2">
+            <div class="title2">
+              <a href="{% url 'Product' %}">
+                 Product
+              </a>
+            </div>
+          </div>
+          <div class="navigation-pill2">
+            <div class="title2">Chatbot</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="hero-image"
+      style="
+        background: url('{% static 'images/hero-image0.png' %}') center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      "
+    >
+      <div class="text-content-title">
+        <div class="title3">SCENT FOR TOI</div>
+        <div class="subtitle">
+          나만의 스타일과 취향을 담은 특별한 향수를 AI의 섬세한 큐레이션으로
+          만나보세요
+        </div>
+      </div>
+      <div class="button-group">
+        <a href="{% url 'test' %}">
+          <div class="button">
+            <div class="button2">CHAT WITH MY AI</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="frame-1">
+      <div class="frame-6"></div>
+      <div class="your-ai">Your AI</div>
+    </div>
+    <img class="mask-group" src="{% static 'images/mask-group0.svg' %}" />
+    <div class="frame-2">
+      <img class="rectangle-3" src="{% static 'images/rectangle-30.png' %}" />
+      <img class="rectangle-4" src="{% static 'images/rectangle-40.png' %}" />
+      <img class="rectangle-5" src="{% static 'images/rectangle-50.png' %}" />
+      <div class="div">
+        남다른 첫 향,
+        <br />
+        나만의 시그니처 향
+      </div>
+      <div class="div2">
+        가격은 가볍게,
+        <br />
+        향기는 길게
+      </div>
+      <div class="div3">
+        트렌드를 입고
+        <br />
+        향기로 완성
+      </div>
+    </div>
+    <div class="frame-5">
+      <img class="_1" src="{% static 'images/_10.png' %}" />
+      <div class="rectangle-6"></div>
+      <div class="top-note">Top Note</div>
+      <div class="middle-note">Middle Note</div>
+      <div class="base-note">Base Note</div>
+    </div>
+        <div class="frame-4">
+      <img
+        class="fragrance-wheel-example-1"
+        src="{% static 'images/fragrance-wheel-example-10.png' %}"
+      />
+    </div>
+  </div>
+  
+</body>
+</html>
